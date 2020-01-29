@@ -1,9 +1,9 @@
 import { selectCounterValue } from "."
-import getMockState from "../../../utils/dev/getMockState"
+import getMockedState from "../../../utils/dev/getMockedState"
 
 describe("Counter selectors", () => {
   it("should select a counter value", () => {
-    const state = getMockState({ counterValue: 4 })
+    const state = getMockedState({ counterValue: 4 })
     expect(selectCounterValue(state)).toBe(4)
   })
 })

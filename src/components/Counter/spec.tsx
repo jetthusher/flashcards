@@ -1,15 +1,19 @@
 import React from "react"
-import { fireEvent } from "@testing-library/react"
+import { fireEvent, render } from "@testing-library/react"
 import Counter from "."
-import testRender from "../../utils/dev/testRender"
 import repeat from "../../utils/repeat"
 import configureStore from "../../store/configureStore"
+import configureProviders from "../App/configureProviders"
+import wrapAround from "../../utils/wrapAround"
 
 const renderCounter = () => {
   const preloadedValue = Math.random()
   const preloadedState = { counter: { value: preloadedValue } }
-  const store = configureStore({ preloadedState })
-  return { preloadedValue, ...testRender(<Counter />, { store }) }
+  const reduxStore = configureStore({ preloadedState })
+  const Providers = configureProviders({ reduxStore })
+  const CounterWithProviders = wrapAround(Providers, Counter)
+  const reactTestingUtils = render(<CounterWithProviders />)
+  return { preloadedValue, ...reactTestingUtils }
 }
 
 describe(Counter.name, () => {

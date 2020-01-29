@@ -1,4 +1,4 @@
-export default <R>(fn: () => R, times: number): R[] =>
+export default <R>(action: () => R, times: number): R[] =>
   Array(times)
     .fill(null)
-    .map(fn)
+    .map(action)
