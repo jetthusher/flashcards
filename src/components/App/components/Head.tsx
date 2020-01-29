@@ -1,0 +1,18 @@
+import React from "react"
+import { Helmet } from "react-helmet-async"
+import { connect } from "react-redux"
+import { RootState } from "../../../store/types"
+import { selectPageTitle } from "../selectors"
+
+const mapStateToProps = (state: RootState) => ({
+  pageTitle: selectPageTitle(state),
+})
+
+type HeadProps = ReturnType<typeof mapStateToProps>
+export const HeadPresentation: React.FC<HeadProps> = ({ pageTitle }) => (
+  <Helmet>
+    <title>{pageTitle}</title>
+  </Helmet>
+)
+
+export default connect(mapStateToProps)(HeadPresentation)

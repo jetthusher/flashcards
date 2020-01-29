@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "target": "esnext",
+    "moduleResolution": "node",
+    "allowJs": false,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "module": "CommonJS",
+    "lib": ["DOM", "ESNext"],
+    "jsx": "react",
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "useDefineForClassFields": true
+  },
+  "exclude": ["node_modules", "build", "dist", "coverage"]
+}

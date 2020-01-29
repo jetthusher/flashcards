@@ -1,0 +1,62 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "typecheck",
+      "problemMatcher": "$tsc"
+    },
+    {
+      "type": "npm",
+      "script": "typecheck:watch",
+      "problemMatcher": "$tsc-watch",
+      "isBackground": true
+    },
+    {
+      "type": "npm",
+      "script": "lint:scripts",
+      "problemMatcher": "$eslint-stylish"
+    },
+    {
+      "type": "npm",
+      "script": "lint:scripts:watch",
+      "problemMatcher": "$eslint-stylish",
+      "isBackground": true
+    },
+    {
+      "type": "npm",
+      "script": "lint:scripts:dev",
+      "problemMatcher": "$eslint-stylish"
+    },
+    {
+      "type": "npm",
+      "script": "lint:scripts:dev:watch",
+      "problemMatcher": "$eslint-stylish",
+      "isBackground": true
+    },
+    {
+      "type": "npm",
+      "script": "lint:styles",
+      "problemMatcher": "$eslint-stylish"
+    },
+    {
+      "type": "npm",
+      "script": "lint:styles:watch",
+      "problemMatcher": "$eslint-stylish",
+      "isBackground": true
+    },
+    {
+      "type": "npm",
+      "script": "lint:styles:dev",
+      "problemMatcher": "$eslint-stylish"
+    },
+    {
+      "type": "npm",
+      "script": "lint:styles:dev:watch",
+      "problemMatcher": "$eslint-stylish",
+      "isBackground": true
+    }
+  ]
+}
