@@ -36,8 +36,7 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "npm run lint:script",
-      "npm run lint:style",
-      "git add"
+      "npm run lint:style"
     ]
   },
   "config": {

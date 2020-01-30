@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
 #-------------------------------------------------------------------------------------------------------------
 
-FROM node:12
+FROM node:12-buster-slim
 
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
@@ -21,7 +21,7 @@ RUN apt-get update \
   && apt-get -y install --no-install-recommends apt-utils dialog 2>&1 \
   #
   # Verify git and needed tools are installed
-  && apt-get -y install git iproute2 procps nano zsh wget curl \
+  && apt-get -y install git iproute2 procps nano zsh wget curl less gpg \
   #
   # [Optional] Update a non-root user to UID/GID if needed.
   && if [ "$USER_GID" != "1000" ] || [ "$USER_UID" != "1000" ]; then \
