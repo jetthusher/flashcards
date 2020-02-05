@@ -1,16 +1,18 @@
 import { takeEvery } from "redux-saga/effects"
 import { SagaIterator } from "redux-saga"
 import { CounterActionTypes } from "../types"
-import { increment, decrement, reset } from "."
+import { incrementSaga, decrementSaga, resetSaga } from "."
 
-export function* watchIncrement(): SagaIterator {
-  yield takeEvery(CounterActionTypes.Increment, increment)
+const { Increment, Decrement, Reset } = CounterActionTypes
+
+export function* watchIncrementSaga(): SagaIterator {
+  yield takeEvery(Increment, incrementSaga)
 }
 
-export function* watchDecrement(): SagaIterator {
-  yield takeEvery(CounterActionTypes.Decrement, decrement)
+export function* watchDecrementSaga(): SagaIterator {
+  yield takeEvery(Decrement, decrementSaga)
 }
 
-export function* watchReset(): SagaIterator {
-  yield takeEvery(CounterActionTypes.Reset, reset)
+export function* watchResetSaga(): SagaIterator {
+  yield takeEvery(Reset, resetSaga)
 }

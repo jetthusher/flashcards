@@ -48,6 +48,7 @@ module.exports = {
     "func-names": "error",
     "no-constant-condition": "error",
     "no-console": "error",
+    "consistent-return": "off",
     "prefer-arrow-callback": [
       "error",
       {
@@ -71,14 +72,13 @@ module.exports = {
       "error",
       {
         devDependencies: [
-          "**/*.test.{js,jsx,ts,tsx}",
-          "**/test.{js,jsx,ts,tsx}",
-          "**/*.spec.{js,jsx,ts,tsx}",
-          "**/spec.{js,jsx,ts,tsx}",
-          "**/{dev,development}/**",
-          "**/*.{dev,development}.{js,jsx,ts,tsx}",
-          "**/{dev,development}.{js,jsx,ts,tsx}",
-          "config/**/**.{js,jsx,ts,tsx}",
+          "**/types.ts",
+          "**/*.d.ts",
+          "**/*.{test,spec,dev,development}.{js,jsx,ts,tsx}",
+          "**/{test,spec,dev,development}.{js,jsx,ts,tsx}",
+          "**/{dev,development}/**/*",
+          "config/**/*",
+          "**/configure*Tester.{ts,tsx,js,jsx}",
         ],
       },
     ],

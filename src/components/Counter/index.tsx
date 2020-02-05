@@ -1,28 +1,27 @@
 import React from "react"
 import { connect } from "react-redux"
-import Button from "../shared/Button"
+import Button from "../shared/components/Button"
 import { RootState } from "../../store/types"
 import {
-  makeIncrementAction,
-  makeDecrementAction,
-  makeResetAction,
+  createIncrementAction,
+  createDecrementAction,
+  createResetAction,
 } from "./actions"
-import { selectCounterValue } from "./selectors"
+import { getCounterValue } from "./selectors"
 
 const mapStateToProps = (state: RootState) => ({
-  count: selectCounterValue(state),
+  count: getCounterValue(state),
 })
 
 const mapDispatchToProps = {
-  increment: makeIncrementAction,
-  decrement: makeDecrementAction,
-  reset: makeResetAction,
+  increment: createIncrementAction,
+  decrement: createDecrementAction,
+  reset: createResetAction,
 }
 
-type CounterProps = ReturnType<typeof mapStateToProps> &
-  typeof mapDispatchToProps
+type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps
 
-export const CounterPresentation: React.FC<CounterProps> = ({
+export const CounterPresentation: React.FC<Props> = ({
   count,
   increment,
   decrement,

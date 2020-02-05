@@ -1,20 +1,16 @@
 {
   "recommendations": [
     // Helpers
-    "eamodio.gitlens",
     "editorconfig.editorconfig",
     "christian-kohler.path-intellisense",
     "jpoissonnier.vscode-styled-components",
     "mikestead.dotenv",
     "formulahendry.auto-rename-tag",
     "kisstkondoros.csstriggers",
-    "ms-azuretools.vscode-docker",
-    "orta.vscode-jest",
 
     // Code quality
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "kisstkondoros.vscode-codemetrics",
     "streetsidesoftware.code-spell-checker"
   ]
 }

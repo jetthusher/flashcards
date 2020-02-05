@@ -9,22 +9,22 @@ import { PartialRootState, AppLocationState } from "./types"
 import rootSaga from "./rootSaga"
 import persistConfig from "./persistConfig"
 
-export interface ConfigureStoreOptions {
+interface Options {
   preloadedState?: PartialRootState
-  routerHistory?: History<AppLocationState>
+  history?: History<AppLocationState>
 }
 
 export default ({
   preloadedState,
-  routerHistory = createMemoryHistory(),
-}: ConfigureStoreOptions = {}) => {
+  history = createMemoryHistory(),
+}: Options = {}) => {
   const sagaMiddleware = createSagaMiddleware()
-  const routerMiddleware = createRouterMiddleware(routerHistory)
+  const routerMiddleware = createRouterMiddleware(history)
   const middlewares = [sagaMiddleware, routerMiddleware]
   const middlewareEnhancer = applyMiddleware(...middlewares)
   const enhancers = [middlewareEnhancer]
   const composedEnhancers = composeWithDevTools(...enhancers)
-  const rootReducer = createRootReducer({ routerHistory })
+  const rootReducer = createRootReducer({ routerHistory: history })
   const persistedReducer = persistReducer(persistConfig, rootReducer)
   const store = createStore(persistedReducer, preloadedState, composedEnhancers)
   const persistor = persistStore(store)

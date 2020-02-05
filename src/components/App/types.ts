@@ -1,7 +1,8 @@
 import { ActionType } from "typesafe-actions"
+import { DeepReadonly } from "utility-types"
 
 export enum AppActionTypes {
   ChangePageTitle = "@@app/CHANGE_TITLE",
 }
 
-export type AppAction = Readonly<ActionType<typeof import("./actions")>>
+export type AppAction = DeepReadonly<ActionType<typeof import("./actions")>>

@@ -24,20 +24,16 @@
   // Add the IDs of extensions you want installed when the container is created in the array below.
   "extensions": [
     // Helpers
-    "eamodio.gitlens",
     "editorconfig.editorconfig",
     "christian-kohler.path-intellisense",
     "jpoissonnier.vscode-styled-components",
     "mikestead.dotenv",
     "formulahendry.auto-rename-tag",
     "kisstkondoros.csstriggers",
-    "ms-azuretools.vscode-docker",
-    "orta.vscode-jest",
 
     // Code quality
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "kisstkondoros.vscode-codemetrics",
     "streetsidesoftware.code-spell-checker"
   ]
 }

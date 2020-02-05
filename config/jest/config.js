@@ -9,9 +9,11 @@ const ignorePatterns = readFileSync(ignoreFile, "utf8")
   .split("\n")
 
 module.exports = {
+  errorOnDeprecated: true,
   collectCoverageFrom: [
     "src/**/*.{ts,tsx,js,jsx}",
     "!src/index.{ts,tsx,js,jsx}",
+    "!src/**/configure*Tester.{ts,tsx,js,jsx}",
   ],
   globals: {
     "ts-jest": { babelConfig },

@@ -1,8 +1,7 @@
 import { PreloadedState } from "redux"
 import { PersistConfig as _PersistConfig } from "redux-persist"
+import { DeepReadonly } from "utility-types"
 import createRootReducer from "./createRootReducer"
-
-type DeepReadonly<T> = { readonly [P in keyof T]: DeepReadonly<T[P]> }
 
 export type RootState = DeepReadonly<
   ReturnType<ReturnType<typeof createRootReducer>>

@@ -2,10 +2,10 @@ import React from "react"
 import { Helmet } from "react-helmet-async"
 import { connect } from "react-redux"
 import { RootState } from "../../../store/types"
-import { selectPageTitle } from "../selectors"
+import { getPageTitle } from "../selectors"
 
 const mapStateToProps = (state: RootState) => ({
-  pageTitle: selectPageTitle(state),
+  pageTitle: getPageTitle(state),
 })
 
 type HeadProps = ReturnType<typeof mapStateToProps>

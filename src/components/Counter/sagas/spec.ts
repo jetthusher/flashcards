@@ -1,37 +1,26 @@
 import {
-  makeIncrementAction,
-  makeDecrementAction,
-  makeResetAction,
+  createIncrementAction,
+  createDecrementAction,
+  createResetAction,
 } from "../actions"
-import configureStore from "../../../store/configureStore"
-import { selectCounterValue } from "../selectors"
-import testStore from "../../../utils/dev/testStore"
-import { CounterAction } from "../types"
-
-const testCounter = (
-  actionCreator: () => CounterAction,
-  expectation: ((state: number) => number) | number,
-) =>
-  testStore({
-    store: configureStore(),
-    selector: selectCounterValue,
-    action: actionCreator(),
-    expectation,
-  })
+import configureCounterSagasTester from "../utils/configureCounterSagasTester"
 
 describe("Counter sagas", () => {
   it("should increment", () => {
-    const { actual, expected } = testCounter(makeIncrementAction, v => v + 1)
+    const action = createIncrementAction()
+    const { actual, expected } = configureCounterSagasTester(action, v => v + 1)
     expect(actual).toBe(expected)
   })
 
   it("should decrement", () => {
-    const { actual, expected } = testCounter(makeDecrementAction, v => v - 1)
+    const action = createDecrementAction()
+    const { actual, expected } = configureCounterSagasTester(action, v => v - 1)
     expect(actual).toBe(expected)
   })
 
   it("should reset", () => {
-    const { actual, expected } = testCounter(makeResetAction, 0)
+    const action = createResetAction()
+    const { actual, expected } = configureCounterSagasTester(action, 0)
     expect(actual).toBe(expected)
   })
 })

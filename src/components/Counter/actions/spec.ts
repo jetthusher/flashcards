@@ -1,35 +1,37 @@
 import {
-  makeIncrementAction,
-  makeDecrementAction,
-  makeSetAction,
-  makeResetAction,
+  createIncrementAction,
+  createDecrementAction,
+  createSetAction,
+  createResetAction,
 } from "."
 import { CounterActionTypes } from "../types"
 
+const { Increment, Decrement, Reset, Set } = CounterActionTypes
+
 describe("Counter actions", () => {
   it("should create a valid increment action", () => {
-    expect(makeIncrementAction()).toEqual({
-      type: CounterActionTypes.Increment,
+    expect(createIncrementAction()).toEqual({
+      type: Increment,
     })
   })
 
   it("should create a valid decrement action", () => {
-    expect(makeDecrementAction()).toEqual({
-      type: CounterActionTypes.Decrement,
+    expect(createDecrementAction()).toEqual({
+      type: Decrement,
     })
   })
 
   it("should create a valid set action", () => {
     const number = Math.random()
-    expect(makeSetAction(number)).toEqual({
-      type: CounterActionTypes.Set,
+    expect(createSetAction(number)).toEqual({
+      type: Set,
       payload: number,
     })
   })
 
   it("should create a valid reset action", () => {
-    expect(makeResetAction()).toEqual({
-      type: CounterActionTypes.Reset,
+    expect(createResetAction()).toEqual({
+      type: Reset,
     })
   })
 })

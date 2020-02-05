@@ -1,4 +1,5 @@
 import { ActionType } from "typesafe-actions"
+import { DeepReadonly } from "utility-types"
 
 export enum CounterActionTypes {
   Increment = "@@counter/INCREMENT",
@@ -7,4 +8,4 @@ export enum CounterActionTypes {
   Reset = "@@counter/RESET",
 }
 
-export type CounterAction = Readonly<ActionType<typeof import("./actions")>>
+export type CounterAction = DeepReadonly<ActionType<typeof import("./actions")>>

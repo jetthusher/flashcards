@@ -1,10 +1,10 @@
 import counterReducer from "./counterReducer"
-import { makeSetAction } from "../actions"
+import { createSetAction } from "../actions"
 
 describe("Counter reducers", () => {
   it("should set value", () => {
     const number = Math.random()
-    const reduced = counterReducer(undefined, makeSetAction(number))
+    const reduced = counterReducer(undefined, createSetAction(number))
     expect(reduced.value).toEqual(number)
   })
 })

@@ -11,12 +11,15 @@
     "**/coverage": true
   },
   "typescript.tsdk": "node_modules/typescript/lib",
-  "jest.pathToConfig": "./config/jest/config.vscode.js",
-  "jest.showCoverageOnLoad": true,
   "eslint.enable": true,
   "eslint.options": {
     "configFile": "./config/eslint/config.dev.js",
     "ignoreFile": "./config/ignorePatterns"
+  },
+  "eslint.validate": ["typescrit", "typescritreact"],
+  "emmet.includeLanguages": {
+    "javascriptreact": true,
+    "typescriptreact": true
   },
   "codemetrics.nodeconfiguration.ReturnStatement": 0,
   "codemetrics.nodeconfiguration.CaseClause": 0,
