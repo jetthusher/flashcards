@@ -1,13 +1,25 @@
 import { PreloadedState } from "redux"
 import { PersistConfig as _PersistConfig } from "redux-persist"
 import { DeepReadonly } from "utility-types"
-import createRootReducer from "./createRootReducer"
+import { StateType } from "typesafe-actions"
+import { RouterAction } from "connected-react-router"
+import createRootReducer from "./configureRootReducer"
+import { AppAction } from "../features/app/types"
+import { CounterAction } from "../features/counter/types"
+import { Services } from "../services/types"
 
-export type RootState = DeepReadonly<
-  ReturnType<ReturnType<typeof createRootReducer>>
+type ConfiguredRootReducer = ReturnType<typeof createRootReducer>
+export type RootState = DeepReadonly<StateType<ConfiguredRootReducer>>
+export type PartialRootState = DeepReadonly<
+  PreloadedState<ReturnType<ConfiguredRootReducer>>
 >
 
-export type PartialRootState = PreloadedState<RootState>
+export interface AppLocationState {
+  test: string
+}
+
+type ReactRouterAction = RouterAction<AppLocationState>
+export type RootAction = ReactRouterAction | AppAction | CounterAction
 
 export interface PersistConfig<S> extends _PersistConfig<S> {
   key: S extends RootState ? "root" : Extract<keyof S, string>
@@ -15,6 +27,6 @@ export interface PersistConfig<S> extends _PersistConfig<S> {
   blacklist?: Extract<keyof S, string>[]
 }
 
-export interface AppLocationState {
-  test: string
+export interface SagaContext {
+  services: Services
 }

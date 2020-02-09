@@ -1,15 +1,29 @@
 module.exports = {
-  processors: ["stylelint-processor-styled-components"],
-  extends: ["stylelint-config-standard", "stylelint-config-rational-order"],
+  syntax: "scss",
+  extends: [
+    "stylelint-config-standard",
+    "stylelint-order",
+    "stylelint-config-rational-order",
+    "stylelint-prettier/recommended",
+  ],
+  plugins: [
+    "stylelint-prettier",
+    "stylelint-order",
+    "stylelint-config-rational-order/plugin",
+  ],
   rules: {
     "no-empty-source": null,
-    "rule-empty-line-before": [
+    "declaration-empty-line-before": "never",
+    "at-rule-empty-line-before": [
       "always",
       {
-        except: ["first-nested", "after-rule"],
-        ignore: ["after-comment"],
+        except: ["first-nested"],
+        ignoreAtRules: ["import"],
       },
     ],
+    "block-closing-brace-newline-after": "always",
+    "block-opening-brace-space-before": "always",
+    "prettier/prettier": true,
     "order/properties-order": [[], { severity: "error" }],
     "plugin/rational-order": [
       true,

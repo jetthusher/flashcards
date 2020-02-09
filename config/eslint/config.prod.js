@@ -12,10 +12,6 @@ module.exports = {
   globals: {
     Atomics: "readonly",
     SharedArrayBuffer: "readonly",
-    page: true,
-    browser: true,
-    context: true,
-    jestPuppeteer: true,
   },
   settings: {
     "import/resolver": {
@@ -24,9 +20,9 @@ module.exports = {
   },
   parserOptions: {
     ecmaFeatures: { jsx: true },
-    ecmaVersion: 2018,
     sourceType: "module",
     project: "./tsconfig.json",
+    warnOnUnsupportedTypeScriptVersion: true,
   },
   plugins: [
     "react",
@@ -48,6 +44,8 @@ module.exports = {
     "func-names": "error",
     "no-constant-condition": "error",
     "no-console": "error",
+    "no-useless-constructor": "off",
+    "no-restricted-syntax": "off",
     "consistent-return": "off",
     "prefer-arrow-callback": [
       "error",
@@ -126,6 +124,7 @@ module.exports = {
 
     "prettier/prettier": "error",
 
+    "@typescript-eslint/no-useless-constructor": "error",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-non-null-assertion": "error",
     "@typescript-eslint/no-unused-vars": "error",
@@ -166,6 +165,7 @@ module.exports = {
         allowAliases: "always",
         allowCallbacks: "always",
         allowLiterals: "never",
+        allowConditionalTypes: "always",
         allowMappedTypes: "always",
         allowTupleTypes: "always",
       },

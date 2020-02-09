@@ -4,9 +4,7 @@ const preloadedState: PartialRootState = {
   app: {
     pageTitle: "Initial title",
   },
-  counter: {
-    value: 10,
-  },
+  counter: 10,
 }
 
 export default preloadedState

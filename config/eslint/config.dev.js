@@ -25,7 +25,6 @@ module.exports = {
     "prefer-arrow-callback": "off",
     "arrow-body-style": "off",
     "object-shorthand": "off",
-    "no-shadow": "off",
     "no-dupe-keys": "off",
 
     "import/order": "off",
@@ -45,6 +44,7 @@ module.exports = {
 
     "prettier/prettier": "off",
 
+    "@typescript-eslint/no-useless-constructor": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-empty-interface": "off",

@@ -10,7 +10,7 @@
     "noImplicitAny": true,
     "noImplicitThis": true,
     "module": "CommonJS",
-    "lib": ["DOM", "ESNext"],
+    "lib": ["DOM", "ESNext", "WebWorker"],
     "jsx": "react",
     "esModuleInterop": true,
     "isolatedModules": true,
