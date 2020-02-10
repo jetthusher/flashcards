@@ -12,21 +12,21 @@ describe("Repeat async", () => {
   })
 
   it("should reject on error", async () => {
+    const errMsg = "Error!"
     const throwError = () => {
-      throw new Error("Error!")
+      throw Error(errMsg)
     }
 
-    await expect(repeatAsync(throwError, 3)).rejects.toThrow()
+    await expect(repeatAsync(throwError, 4)).rejects.toThrow()
   })
 
-  it("should fulfill with array of results", async () => {
+  it("should resolve with array of results", async () => {
     let count = 0
     const increment = () => {
       count += 1
       return count
     }
 
-    const result = await repeatAsync(increment, 3)
-    expect(result).toEqual([1, 2, 3])
+    await expect(repeatAsync(increment, 3)).resolves.toEqual([1, 2, 3])
   })
 })

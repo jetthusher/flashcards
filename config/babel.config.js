@@ -11,5 +11,8 @@ module.exports = {
     "@babel/plugin-proposal-nullish-coalescing-operator",
     "@babel/plugin-proposal-export-default-from",
     "@babel/plugin-proposal-private-methods",
+    ["@babel/plugin-proposal-pipeline-operator", { proposal: "minimal" }],
+    "@babel/plugin-proposal-do-expressions",
+    "@babel/plugin-proposal-logical-assignment-operators",
   ],
 }

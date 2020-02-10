@@ -26,10 +26,13 @@ module.exports = {
     "arrow-body-style": "off",
     "object-shorthand": "off",
     "no-dupe-keys": "off",
+    "no-sparse-arrays": "off",
 
     "import/order": "off",
     "import/no-extraneous-dependencies": "off",
     "import/no-useless-path-segments": "off",
+
+    "prefer-arrow/prefer-arrow-functions": "off",
 
     "react/self-closing-comp": "off",
     "react/jsx-indent": "off",
@@ -39,6 +42,8 @@ module.exports = {
     "react/jsx-closing-tag-location": "off",
     "react/jsx-first-prop-new-line": "off",
     "react/jsx-closing-bracket-location": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-wrap-multilines": "off",
 
     "jsx-a11y/control-has-associated-label": "off",
 
