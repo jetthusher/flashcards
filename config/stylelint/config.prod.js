@@ -12,6 +12,7 @@ module.exports = {
     "stylelint-config-rational-order/plugin",
   ],
   rules: {
+    "value-keyword-case": null,
     "no-empty-source": null,
     "declaration-empty-line-before": "never",
     "at-rule-empty-line-before": [
