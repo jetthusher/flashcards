@@ -5,6 +5,11 @@
   "tasks": [
     {
       "type": "npm",
+      "script": "start",
+      "isBackground": true
+    },
+    {
+      "type": "npm",
       "script": "typecheck",
       "problemMatcher": "$tsc"
     },
