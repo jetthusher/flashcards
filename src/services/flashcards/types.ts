@@ -7,7 +7,7 @@ import {
   EditableCardSet,
 } from "./children/configureCardSetService/types"
 
-export type AddCardSet = (
+export type CreateCardSet = (
   options: EditableCardSet,
   cards?: EditableCard[],
 ) => Id
@@ -15,8 +15,7 @@ export type AddCardSet = (
 export type GetCardSetById = (cardSetId: Id) => CardSet | undefined
 
 export type FindCardSet = (
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  conditionCallback: (cardSet: CardSet) => any,
+  conditionCallback: (cardSet: CardSet) => boolean,
 ) => CardSet | undefined
 
 export type GetAllCardSets = () => CardSet[]
@@ -27,8 +26,7 @@ export type GetCardInCardSetById = (
 ) => Card | undefined
 
 export type FindCardInCardSet = (
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  conditionCallback: (card: Card) => any,
+  conditionCallback: (card: Card) => boolean,
   cardSetId: Id,
 ) => Card | undefined
 
@@ -63,7 +61,7 @@ export type FlashcardsService = DeepReadonly<{
   findCardInCardSet: FindCardInCardSet
   getAllCardsInCardSet: GetAllCardsInCardSet
   getAllCards: GetAllCards
-  addCardSet: AddCardSet
+  createCardSet: CreateCardSet
   removeCardSet: RemoveCardSet
   editCardSet: EditCardSet
   addCardToCardSet: AddCardToCardSet

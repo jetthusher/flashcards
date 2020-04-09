@@ -22,7 +22,9 @@ describe("Flashcards service", () => {
   beforeEach(() => {
     flashcards = configureServices().flashcards
     flashcardsWithFixtures = configureServices({
-      flashcards: [cardSet1, cardSet2],
+      initialState: {
+        flashcards: [cardSet1, cardSet2],
+      },
     }).flashcards
   })
 
@@ -122,10 +124,10 @@ describe("Flashcards service", () => {
     expect(cards).toHaveLength(0)
   })
 
-  it("should add card set", () => {
+  it("should create card set", () => {
     const cards = [card1, card2, card3]
-    const id1 = flashcards.addCardSet({ name: "fatherfather" }, cards)
-    const id2 = flashcards.addCardSet({})
+    const id1 = flashcards.createCardSet({ name: "fatherfather" }, cards)
+    const id2 = flashcards.createCardSet({})
     const cardSetRecord1 = flashcards.getCardSetById(id1) as CardSet
     const cardSetRecord2 = flashcards.getCardSetById(id2) as CardSet
 
@@ -171,7 +173,7 @@ describe("Flashcards service", () => {
   })
 
   it("should be able to add empty cards", () => {
-    const cardSetId = flashcards.addCardSet({})
+    const cardSetId = flashcards.createCardSet({})
     const cardId = flashcards.addCardToCardSet({}, cardSetId)
     const cardRecord = flashcards.getCardInCardSetById(
       cardId as string,

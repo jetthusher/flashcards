@@ -15,10 +15,7 @@ import {
 } from "./types"
 import objectToArrayOfValues from "../../../../utils/objectToArrayOfValues"
 
-export default ({
-  cardService,
-  recordService,
-}: CardSetServiceDependencies): CardSetService => {
+export default (dependencies: CardSetServiceDependencies): CardSetService => {
   const getCardById: GetCardById = (cardSet, cardId) =>
     cardSet.cardsById[cardId]
 
@@ -31,33 +28,33 @@ export default ({
   const createCardSet: CreateCardSet = ({ name = "" }, cards) => {
     const cardsById: CardsById = {}
     cards.forEach(options => {
-      const cardRecord = cardService.createCard(options)
+      const cardRecord = dependencies.cardService.createCard(options)
       cardsById[cardRecord.id] = cardRecord
     })
 
-    return recordService.createRecord<CardSet>({ name, cardsById })
+    return dependencies.recordService.createRecord<CardSet>({ name, cardsById })
   }
 
   const editCardSet: EditCardSet = (cardSet, options) =>
-    recordService.editRecord(cardSet, options)
+    dependencies.recordService.editRecord(cardSet, options)
 
   const addCard: AddCard = (cardSet, options) => {
-    const cardRecord = cardService.createCard(options)
+    const cardRecord = dependencies.cardService.createCard(options)
     const cardsById = { ...cardSet.cardsById, [cardRecord.id]: cardRecord }
-    return recordService.editRecord(cardSet, { cardsById })
+    return dependencies.recordService.editRecord(cardSet, { cardsById })
   }
 
   const removeCard: RemoveCard = (cardSet, cardId) => {
     const cardsById = { ...cardSet.cardsById }
     delete cardsById[cardId]
-    return recordService.editRecord(cardSet, { cardsById })
+    return dependencies.recordService.editRecord(cardSet, { cardsById })
   }
 
   const editCard: EditCard = (cardSet, cardId, options) => {
     const card = cardSet.cardsById[cardId]
-    const updatedCard = cardService.editCard(card, options)
+    const updatedCard = dependencies.cardService.editCard(card, options)
     const cardsById = { ...cardSet.cardsById, [cardId]: updatedCard }
-    return recordService.editRecord(cardSet, { cardsById })
+    return dependencies.recordService.editRecord(cardSet, { cardsById })
   }
 
   return deepFreeze({

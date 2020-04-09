@@ -2,7 +2,7 @@ import deepFreeze from "deep-freeze"
 import {
   CardSetsServiceDependencies,
   FlashcardsService,
-  AddCardSet,
+  CreateCardSet,
   RemoveCardSet,
   EditCardSet,
   AddCardToCardSet,
@@ -22,8 +22,8 @@ import objectToArrayOfValues from "../../utils/objectToArrayOfValues"
 import getArrayDifference from "../../utils/getArrayDifference"
 import { Id } from "../id/types"
 
-export default ({ cardSetService }: CardSetsServiceDependencies) => (
-  cardSets: CardSet[] = [],
+export default (dependencies: CardSetsServiceDependencies) => (
+  initialState: CardSet[] = [],
 ): FlashcardsService => {
   const cardSetsDictionary: Record<Id, CardSet> = {}
 
@@ -44,7 +44,7 @@ export default ({ cardSetService }: CardSetsServiceDependencies) => (
     const cardSet = getCardSetById(cardSetId)
 
     if (cardSet) {
-      return cardSetService.getCardById(cardSet, cardId)
+      return dependencies.cardSetService.getCardById(cardSet, cardId)
     }
   }
 
@@ -55,7 +55,7 @@ export default ({ cardSetService }: CardSetsServiceDependencies) => (
     const cardSet = getCardSetById(cardSetId)
 
     if (cardSet) {
-      return cardSetService.findCard(cardSet, conditionCallback)
+      return dependencies.cardSetService.findCard(cardSet, conditionCallback)
     }
   }
 
@@ -63,7 +63,7 @@ export default ({ cardSetService }: CardSetsServiceDependencies) => (
     const cardSet = getCardSetById(cardSetId)
 
     if (cardSet) {
-      return cardSetService.getAllCards(cardSet)
+      return dependencies.cardSetService.getAllCards(cardSet)
     }
   }
 
@@ -73,8 +73,8 @@ export default ({ cardSetService }: CardSetsServiceDependencies) => (
       .map(objectToArrayOfValues)
       .flat()
 
-  const addCardSet: AddCardSet = (options, cards = []) => {
-    const cardSet = cardSetService.createCardSet(options, cards)
+  const createCardSet: CreateCardSet = (options, cards = []) => {
+    const cardSet = dependencies.cardSetService.createCardSet(options, cards)
     const { id } = cardSet
     storeCardSet(cardSet)
     return id
@@ -88,7 +88,7 @@ export default ({ cardSetService }: CardSetsServiceDependencies) => (
     const cardSet = getCardSetById(cardSetId)
 
     if (cardSet) {
-      const updated = cardSetService.editCardSet(cardSet, options)
+      const updated = dependencies.cardSetService.editCardSet(cardSet, options)
       storeCardSet(updated)
     }
   }
@@ -97,7 +97,7 @@ export default ({ cardSetService }: CardSetsServiceDependencies) => (
     const cardSet = getCardSetById(cardSetId)
 
     if (cardSet) {
-      const updated = cardSetService.addCard(cardSet, card)
+      const updated = dependencies.cardSetService.addCard(cardSet, card)
       storeCardSet(updated)
 
       const idsBefore = Object.keys(cardSet.cardsById)
@@ -112,7 +112,7 @@ export default ({ cardSetService }: CardSetsServiceDependencies) => (
     const cardSet = getCardSetById(cardSetId)
 
     if (cardSet) {
-      const updated = cardSetService.removeCard(cardSet, cardId)
+      const updated = dependencies.cardSetService.removeCard(cardSet, cardId)
       storeCardSet(updated)
     }
   }
@@ -121,7 +121,11 @@ export default ({ cardSetService }: CardSetsServiceDependencies) => (
     const cardSet = getCardSetById(cardSetId)
 
     if (cardSet) {
-      const updated = cardSetService.editCard(cardSet, cardId, options)
+      const updated = dependencies.cardSetService.editCard(
+        cardSet,
+        cardId,
+        options,
+      )
       storeCardSet(updated)
     }
   }
@@ -130,7 +134,7 @@ export default ({ cardSetService }: CardSetsServiceDependencies) => (
     cardSetsForImport.forEach(storeCardSet)
   }
 
-  importCardSets(cardSets)
+  importCardSets(initialState)
 
   return deepFreeze({
     getCardSetById,
@@ -140,7 +144,7 @@ export default ({ cardSetService }: CardSetsServiceDependencies) => (
     findCardInCardSet,
     getAllCardsInCardSet,
     getAllCards,
-    addCardSet,
+    createCardSet,
     removeCardSet,
     editCardSet,
     addCardToCardSet,

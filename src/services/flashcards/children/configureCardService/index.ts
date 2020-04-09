@@ -7,12 +7,12 @@ import {
   CardServiceDependencies,
 } from "./types"
 
-export default ({ recordService }: CardServiceDependencies): CardService => {
+export default (dependencies: CardServiceDependencies): CardService => {
   const createCard: CreateCard = ({ question = "", answer = "" }) =>
-    recordService.createRecord<Card>({ question, answer })
+    dependencies.recordService.createRecord<Card>({ question, answer })
 
   const editCard: EditCard = (card, options) =>
-    recordService.editRecord(card, options)
+    dependencies.recordService.editRecord(card, options)
 
   return deepFreeze({
     createCard,

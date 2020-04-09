@@ -15,7 +15,11 @@ interface InitialStates {
   counter?: CounterServiceInitialState
 }
 
-export default ({ flashcards, counter }: InitialStates = {}) => {
+interface Options {
+  initialState?: InitialStates
+}
+
+export default ({ initialState }: Options = {}) => {
   const createCounterService = configureCounterServiceCreator()
   const idCounter = createCounterService()
   const idService = configureIdService({ counterService: idCounter })
@@ -24,10 +28,10 @@ export default ({ flashcards, counter }: InitialStates = {}) => {
   const cardSetService = configureCardSetService({ cardService, recordService })
   const flashcardsService = configureFlashcardsServiceCreator({
     cardSetService,
-  })(flashcards)
+  })(initialState?.flashcards)
 
   return deepFreeze({
-    counter: createCounterService(counter),
+    counter: createCounterService(initialState?.counter),
     id: idService,
     record: recordService,
     flashcards: flashcardsService,
