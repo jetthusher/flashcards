@@ -3,7 +3,7 @@ import { Store, Action } from "redux"
 import { Persistor } from "redux-persist"
 import { AppLocationState } from "../../../../store/types"
 import composeProviders from "../composeProviders"
-import filterProviders from "../filterProviders"
+import ArrayOfFilteredProviders from "../ArrayOfFilteredProviders"
 import createStoreProvider from "../providerCreators/createStoreProvider"
 import createPersistProvider from "../providerCreators/createPersistProvider"
 import createRouterProvider from "../providerCreators/createRouterProvider"
@@ -23,7 +23,8 @@ export default <S, A extends Action>({
   persistLoader,
   history,
 }: Options<S, A>) => {
-  const providers = filterProviders()
+  const arrayOfFilteredProviders = new ArrayOfFilteredProviders()
+  const providers = arrayOfFilteredProviders
     .addProvider(store, createStoreProvider)
     .addProvider(persistor, x => createPersistProvider(x, persistLoader))
     .addProvider(history, createRouterProvider)

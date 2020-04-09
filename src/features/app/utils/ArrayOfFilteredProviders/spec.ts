@@ -1,4 +1,4 @@
-import filterProviders from "."
+import ArrayOfFilteredProviders from "."
 
 describe("Filter providers", () => {
   it("should get only providers that have met the condition", () => {
@@ -6,7 +6,8 @@ describe("Filter providers", () => {
     const w2 = jest.fn()
     const w3 = jest.fn()
 
-    const providers = filterProviders()
+    const providers = new ArrayOfFilteredProviders()
+    providers
       .addProvider(true, x => w1(x))
       .addProvider(1, x => w2(x))
       .addProvider(0, x => w3(x))
