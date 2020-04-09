@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle<ThemeProps<AppTheme>>`
     margin: 0;
     padding: 0;
     color: ${props => props.theme.textColor};
+    font-family: Roboto, sans-serif;
     background-color: ${props => props.theme.backgroundColor};
   }
 `
