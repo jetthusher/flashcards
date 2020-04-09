@@ -27,6 +27,8 @@ module.exports = {
     "object-shorthand": "off",
     "no-dupe-keys": "off",
     "no-sparse-arrays": "off",
+    "prefer-template": "off",
+    "no-lone-blocks": "off",
 
     "import/order": "off",
     "import/no-extraneous-dependencies": "off",
@@ -44,6 +46,7 @@ module.exports = {
     "react/jsx-closing-bracket-location": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-wrap-multilines": "off",
+    "react/jsx-props-no-multi-spaces": "off",
 
     "jsx-a11y/control-has-associated-label": "off",
 
@@ -65,5 +68,6 @@ module.exports = {
     "@typescript-eslint/class-name-casing": "off",
     "@typescript-eslint/no-type-alias": "off",
     "@typescript-eslint/no-unnecessary-type-arguments": "off",
+    "@typescript-eslint/no-var-requires": "off",
   },
 }
