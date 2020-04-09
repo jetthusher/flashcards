@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
-import Button from "../shared/components/Button"
+import { Button } from "@material-ui/core"
 import { RootState } from "../../store/types"
 import {
   createIncrementAction,
@@ -37,9 +37,15 @@ const Counter: React.FC<Props> = ({
   return (
     <>
       <span>{count}</span>
-      <Button onClick={increment}>+</Button>
-      <Button onClick={decrement}>-</Button>
-      <Button onClick={reset}>Reset</Button>
+      <Button color="inherit" onClick={increment}>
+        +
+      </Button>
+      <Button color="inherit" onClick={decrement}>
+        -
+      </Button>
+      <Button color="inherit" onClick={reset}>
+        Reset
+      </Button>
     </>
   )
 }
