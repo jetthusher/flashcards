@@ -140,6 +140,7 @@ jspm_packages/
 .DS_*
 **/*.backup.*
 **/*.back.*
+build
 
 node_modules
 bower_componets
