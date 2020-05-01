@@ -23,7 +23,9 @@
     "lint:style:dev": "npm run lint:style --config ./config/stylelint/config.dev.js",
     "lint:styles:dev": "npm run lint:style:dev -- './**/*.{js,jsx,ts,tsx}'",
     "lint:styles:dev:watch": "npm run lint:watch -- npm run lint:styles:dev",
-    "check:all": "npm run typecheck && npm run lint:styles && npm run lint:scripts && npm run test:coverage"
+    "check:all": "npm run typecheck && npm run lint:styles && npm run lint:scripts && npm run test:coverage",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "husky": {
     "hooks": {
@@ -164,6 +166,8 @@
     "styled-components": "^5.0.1",
     "styled-theming": "^2.2.0",
     "typesafe-actions": "^5.1.0",
-    "utility-types": "^3.10.0"
-  }
+    "utility-types": "^3.10.0",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
